@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poetry Patch - Mood patches made of words</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      color: #333;
+    }
+    header, footer {
+      background: linear-gradient(90deg, #b2f0a3 0%, #d1ffe8 100%);
+      padding: 1em;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 0.5em;
+      margin-top: 0.5em;
+      flex-wrap: wrap;
+    }
+    nav a {
+      background-color: #a8e6a3;
+      border: 2px solid #388e3c;
+      border-radius: 10px;
+      color: #1b5e20;
+      text-decoration: none;
+      padding: 0.5em 1em;
+      font-weight: bold;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    nav a:hover {
+      background-color: #81c784;
+      transform: scale(1.05);
+    }
+    .hero {
+      background: linear-gradient(180deg, #e0f8d8 0%, #ffffff 100%);
+      padding: 3em 1em;
+      text-align: center;
+      border-bottom: 2px solid #a8e6a3;
+    }
+    .hero h1 {
+      font-size: 2.8em;
+      color: #2e7d32;
+    }
+    .button {
+      padding: 0.8em 1.5em;
+      margin: 1em;
+      background-color: #a8e6a3;
+      border: 2px solid #388e3c;
+      border-radius: 12px;
+      font-weight: bold;
+      color: #1b5e20;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .button:hover {
+      background-color: #81c784;
+      transform: scale(1.05);
+    }
+    section {
+      padding: 2em;
+      max-width: 900px;
+      margin: auto;
+    }
+    .mood-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1em;
+      justify-content: center;
+    }
+    .mood {
+      background: #ffffff;
+      padding: 1em;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 120px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .mood:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    footer p {
+      margin: 0.3em 0;
+    }
+    .counter {
+      text-align: center;
+      margin-top: 2em;
+      font-size: 1.1em;
+      background-color: #f0fff4;
+      border: 1px solid #b2f0a3;
+      border-radius: 8px;
+      padding: 1em;
+    }
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 0.75em;
+      margin: 0.5em 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    ul li {
+      margin: 0.5em 0;
+    }
+  </style>
+</head>
+<body onload="incrementVisitCount()">
+  <header>
+    <h1>Poetry Patch</h1>
+    <p><em>Mood patches made of words.</em></p>
+    <nav>
+      <a href="#how">How It Works</a>
+      <a href="#patches">Get a Patch</a>
+      <a href="#share">Share a Patch</a>
+      <a href="#join">Join the Crew</a>
+      <a href="#who">Who We Are</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Feeling everything? Or nothing at all?</h1>
+    <p>Stick a poem on that feeling.</p>
+    <a class="button" href="#patches">🩹 Get a Patch</a>
+    <a class="button" href="#share">✍️ Share Your Poem</a>
+  </section>
+
+  <section class="counter">
+    <p>Total Visits: <span id="visitCount">0</span></p>
+    <p>Total Shares: <span id="shareCount">0</span></p>
+  </section>
+
+  <section id="how">
+    <h2>What’s a Poetry Patch?</h2>
+    <ol>
+      <li>Pick your mood</li>
+      <li>Get a poetry patch</li>
+      <li>Read, reflect, or share</li>
+    </ol>
+    <p><em>We’re not doctors. Just people who believe poems can hold space for your feelings.</em></p>
+  </section>
+
+  <section id="patches">
+    <h2>Get a Patch</h2>
+    <div class="mood-grid">
+      <div class="mood">😶 Numb</div>
+      <div class="mood">😔 Sad</div>
+      <div class="mood">🧃 Need a Refill</div>
+      <div class="mood">🤯 Overthinking</div>
+      <div class="mood">💔 Heart Glitch</div>
+      <div class="mood">☁️ Lost</div>
+      <div class="mood">🌈 Hopeful</div>
+      <div class="mood">🎧 Quiet Time</div>
+      <div class="mood">🛹 Just Drifting</div>
+    </div>
+  </section>
+
+  <section id="share">
+    <h2>Share Your Patch</h2>
+    <p>Your words might be the patch someone else needs.</p>
+    <form>
+      <input type="text" placeholder="Nickname (optional)" />
+      <input type="number" placeholder="Age (13–24)" />
+      <input type="text" placeholder="Country" />
+      <textarea rows="5" placeholder="Your Poem"></textarea>
+      <select>
+        <option>Select Mood Tag</option>
+        <option>Numb</option>
+        <option>Sad</option>
+        <option>Hopeful</option>
+      </select>
+      <textarea rows="2" placeholder="Why I wrote this (optional)"></textarea>
+      <button class="button" type="submit">📫 Submit Patch</button>
+    </form>
+  </section>
+
+  <section id="join">
+    <h2>Join the Crew</h2>
+    <p>Poetry Patch is built by young people — for young people. Want to help shape it?</p>
+    <ul>
+      <li>🧠 Curate Patches</li>
+      <li>🌍 Translate Patches</li>
+      <li>🎙 Start a Poetry Patch Circle</li>
+      <li>🫶 Volunteer your skills</li>
+    </ul>
+    <button class="button">✍️ Join Us</button>
+  </section>
+
+  <section id="who">
+    <h2>Who We Are</h2>
+    <p><strong>Ethan Qin</strong> – President</p>
+    <p><strong>XX</strong> – Vice President</p>
+    <p>We are a youth-led team dedicated to creating a safe and inspiring space where emotions and words meet. Poetry Patch was built for young people, by young people — because we all need a patch sometimes.</p>
+  </section>
+
+  <footer>
+    <p><strong>Contact:</strong> hello@poetrypatch.org</p>
+    <p><em>This is not a medical space — just a soft one. For urgent help, visit <a href="#">our help links</a>.</em></p>
+    <p>© 2025 Poetry Patch. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function incrementVisitCount() {
+      let visitCount = localStorage.getItem('visitCount');
+      visitCount = visitCount ? parseInt(visitCount) + 1 : 1;
+      localStorage.setItem('visitCount', visitCount);
+      document.getElementById('visitCount').textContent = visitCount;
+    }
+
+    function incrementShareCount() {
+      let shareCount = localStorage.getItem('shareCount');
+      shareCount = shareCount ? parseInt(shareCount) + 1 : 1;
+      localStorage.setItem('shareCount', shareCount);
+      document.getElementById('shareCount').textContent = shareCount;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('visitCount').textContent = localStorage.getItem('visitCount') || 0;
+      document.getElementById('shareCount').textContent = localStorage.getItem('shareCount') || 0;
+    });
+  </script>
+</body>
+</html>
